@@ -1,6 +1,6 @@
 package hello.core.singleton;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,5 +34,25 @@ public class SingletonTest {
 		 * **메모리 낭비를 해결하려면
 		 * 요청수와 상관없이 해당 객체가 1개만 생성되고 공유하도록 설계 ==> 싱글톤 패턴
 		 * */
+	}
+	
+	@Test
+	@DisplayName("싱글톤 패턴을 적용한 객체 사용")
+	void singletonServiceTest() {
+		
+		// private 생성자이므로 new를 이용해서 객체 생성 불가능
+//		new SingletonService(); 
+		
+		// static 메서드를 통해 객체 조회 가능
+		// 호출할 때마다 같은 객체 인스턴스 반환
+		SingletonService singletonService1 = SingletonService.getInstance();
+		SingletonService singletonService2 = SingletonService.getInstance();
+		
+		// 참조값이 같은 것을 확인
+		System.out.println("singletonService1 : " + singletonService1);
+		System.out.println("singletonService2 : " + singletonService2);
+		
+		// singletonService1 == singletonService2
+		assertThat(singletonService1).isSameAs(singletonService2);
 	}
 }
