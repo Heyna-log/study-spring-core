@@ -30,13 +30,6 @@ public class ConfigurationSingletonTest {
 		
 		assertThat(memberService.getMemberRepository()).isSameAs(memberRepository);
 		assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
-		
-		/* 
-		 * @Configuration을 적용하지 않으면 AppConfig의 자바 코드대로
-		 * 'new MemberRepository'가 총 세 번 호출되고,
-		 * memberRepository 객체가 3개 생성이 되어 싱글톤 보장이 되지 않는다.
-		 * 
-		 * */
 	}
 	
 	@Test
@@ -45,13 +38,5 @@ public class ConfigurationSingletonTest {
 		
 		// AppConfig 런타임 클래스 객체 확인
 		System.out.println("been : " + bean.getClass());
-		
-		/* 
-		 * 실제 출력 결과 : class hello.core.AppConfig
-		 * 
-		 * @Configuration을 적용하지 않으면
-		 * AppConfig가 CGLIB 기술 없이 순수한 AppConfig로 스프링 빈에 등록됨.
-		 * 
-		*/
 	}
 }

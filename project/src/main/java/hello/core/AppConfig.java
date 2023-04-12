@@ -13,7 +13,7 @@ import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 
 // **어노테이션 기반 자바 설정 클래스
-//@Configuration // '애플리케이션 설정(구성) 정보 담당'을 의미
+@Configuration // '애플리케이션 설정(구성) 정보 담당'을 의미
 public class AppConfig {
 	
 	/*
