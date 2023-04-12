@@ -27,6 +27,7 @@ public class AppConfig {
 	
 	@Bean // 메소드 호출 후 반환되는 객체를 스프링 빈으로 등록
 	public MemberRepository memberRepository() {
+		System.out.println("call AppConfig.memberRepository");
 		return new MemoryMemberRepository(); // 빈으로 등록
 	}
 
@@ -37,11 +38,13 @@ public class AppConfig {
 
 	@Bean
 	public MemberService memberService() {
+		System.out.println("call AppConfig.memberService");
 		return new MemberServiceImpl(memberRepository());
 	}
 
 	@Bean
 	public OrderService orderService() {
+		System.out.println("call AppConfig.orderService");
 		return new OrderServiceImpl(memberRepository(), discountPolicy());
 	}
 }

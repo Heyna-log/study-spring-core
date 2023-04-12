@@ -44,4 +44,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	
+	// test용
+	public MemberRepository getMemberRepository() {
+		return memberRepository;
+	}
+	
 }
