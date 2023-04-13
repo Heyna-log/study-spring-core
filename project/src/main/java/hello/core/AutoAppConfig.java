@@ -1,8 +1,12 @@
 package hello.core;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
 
 /* **@ComponentScan
  *  - @Component가 붙은 클래스를 스캔해서 스프링 빈으로 등록
@@ -33,4 +37,9 @@ import org.springframework.context.annotation.FilterType;
 )
 public class AutoAppConfig {
 
+	// 수동으로 빈 등록
+	@Bean(name = "memoryMemberRepository") // 자동으로 등록되는 빈 이름과 중복되도록 빈 이름 지정
+	MemberRepository memberRepository() {
+		return new MemoryMemberRepository();
+	}
 }
