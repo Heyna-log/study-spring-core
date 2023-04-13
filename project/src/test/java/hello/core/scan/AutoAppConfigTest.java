@@ -14,7 +14,7 @@ public class AutoAppConfigTest {
 	void basicScan() {
 		AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
 		
-		MemberService memberService = ac.getBean(MemberService.class);
+		MemberService memberService = ac.getBean("service", MemberService.class); // 빈 등록 시 중복되는 이름으로 인한 충돌 - ConflictingBeanDefinitionException 
 		assertThat(memberService).isInstanceOf(MemberService.class);
 	}
 }

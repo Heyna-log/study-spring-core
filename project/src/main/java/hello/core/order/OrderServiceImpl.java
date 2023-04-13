@@ -7,7 +7,7 @@ import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 
-@Component
+@Component("service")
 public class OrderServiceImpl implements OrderService {
 	
 	private final MemberRepository memberRepository;
