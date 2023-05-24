@@ -5,30 +5,30 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
 /* **@ComponentScan
- *  - @Component°¡ ºÙÀº Å¬·¡½º¸¦ ½ºÄµÇØ¼­ ½ºÇÁ¸µ ºóÀ¸·Î µî·Ï
- *  - ½ºÇÁ¸µ ºóÀÇ ±âº» ÀÌ¸§Àº Å¬·¡½º¸íÀ» »ç¿ëÇÏµÇ, ¸Ç ¾Õ±ÛÀÚ¸¸ ¼Ò¹®ÀÚ·Î ¹Ù²Ù¾î »ç¿ë(MemberServiceImpl Å¬·¡½º -> memberServiceImpl)
- *  - ½ºÇÁ¸µ ºóÀÇ ÀÌ¸§À» Á÷Á¢ ÁöÁ¤ÇÏ´Â °æ¿ì, @Component("ÁöÁ¤ÇÒ ºó ÀÌ¸§")·Î ÁöÁ¤ °¡´É
+ *  - @Componentê°€ ë¶™ì€ í´ë˜ìŠ¤ë¥¼ ìŠ¤ìº”í•´ì„œ ìŠ¤í”„ë§ ë¹ˆìœ¼ë¡œ ë“±ë¡
+ *  - ìŠ¤í”„ë§ ë¹ˆì˜ ê¸°ë³¸ ì´ë¦„ì€ í´ë˜ìŠ¤ëª…ì„ ì‚¬ìš©í•˜ë˜, ë§¨ ì•ê¸€ìë§Œ ì†Œë¬¸ìë¡œ ë°”ê¾¸ì–´ ì‚¬ìš©(MemberServiceImpl í´ë˜ìŠ¤ -> memberServiceImpl)
+ *  - ìŠ¤í”„ë§ ë¹ˆì˜ ì´ë¦„ì„ ì§ì ‘ ì§€ì •í•˜ëŠ” ê²½ìš°, @Component("ì§€ì •í•  ë¹ˆ ì´ë¦„")ë¡œ ì§€ì • ê°€ëŠ¥
  *  
- * **ÄÄÆ÷³ÍÆ® ½ºÄµ ±âº» ´ë»ó => @Component°¡ Æ÷ÇÔµÇ¾î ÀÖ´Â ¾î³ëÅ×ÀÌ¼Ç
- *  - @Component : ÄÄÆ÷³ÍÆ® ½ºÄµ¿¡¼­ »ç¿ë
- *  - @Controller : ½ºÇÁ¸µ MVC ÄÁÆ®·Ñ·¯¿¡¼­ »ç¿ë
- *  - @Service : ½ºÇÁ¸µ ºñÁî´Ï½º ·ÎÁ÷¿¡¼­ »ç¿ë
- *  - @Repository : ½ºÇÁ¸µ µ¥ÀÌÅÍ Á¢±Ù °èÃş¿¡¼­ »ç¿ë
- *  - @Configuration : ½ºÇÁ¸µ ¼³Á¤ Á¤º¸¿¡¼­ »ç¿ë
+ * **ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº” ê¸°ë³¸ ëŒ€ìƒ => @Componentê°€ í¬í•¨ë˜ì–´ ìˆëŠ” ì–´ë…¸í…Œì´ì…˜
+ *  - @Component : ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº”ì—ì„œ ì‚¬ìš©
+ *  - @Controller : ìŠ¤í”„ë§ MVC ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ ì‚¬ìš©
+ *  - @Service : ìŠ¤í”„ë§ ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ì—ì„œ ì‚¬ìš©
+ *  - @Repository : ìŠ¤í”„ë§ ë°ì´í„° ì ‘ê·¼ ê³„ì¸µì—ì„œ ì‚¬ìš©
+ *  - @Configuration : ìŠ¤í”„ë§ ì„¤ì • ì •ë³´ì—ì„œ ì‚¬ìš©
  */
 
-@Configuration // @Configuration ¾È¿¡ @Component°¡ Æ÷ÇÔµÇ¾î ÀÖ¾î¼­ ÄÄÆ÷³ÍÆ® ½ºÄµ ´ë»óÀÌ µÊ
+@Configuration // @Configuration ì•ˆì— @Componentê°€ í¬í•¨ë˜ì–´ ìˆì–´ì„œ ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº” ëŒ€ìƒì´ ë¨
 @ComponentScan(
-	// Å½»öÇÒ ÆĞÅ°ÁöÀÇ ½ÃÀÛ À§Ä¡ ÁöÁ¤
-	// ½ÃÀÛ À§Ä¡¸¦ ¿©·¯°³ ÁöÁ¤ÇÒ ¼öµµ ÀÖÀ½. ex) basePakages = {"hello.core", "hello.service"}
-	basePackages = "hello.core", // core ÆĞÅ°Áö¿Í ±× ÇÏÀ§ ÆĞÅ°ÁöµéÀ» Å½»ö
+	// íƒìƒ‰í•  íŒ¨í‚¤ì§€ì˜ ì‹œì‘ ìœ„ì¹˜ ì§€ì •
+	// ì‹œì‘ ìœ„ì¹˜ë¥¼ ì—¬ëŸ¬ê°œ ì§€ì •í•  ìˆ˜ë„ ìˆìŒ. ex) basePakages = {"hello.core", "hello.service"}
+	basePackages = "hello.core", // core íŒ¨í‚¤ì§€ì™€ ê·¸ í•˜ìœ„ íŒ¨í‚¤ì§€ë“¤ì„ íƒìƒ‰
 	
-	// ÁöÁ¤ÇÑ Å¬·¡½ºÀÇ ÆĞÅ°Áö¸¦ Å½»ö ½ÃÀÛ À§Ä¡·Î ÁöÁ¤
-	basePackageClasses = AutoAppConfig.class, // AutoAppConfig.classÀÇ ÆĞÅ°Áö´Â hello.core
+	// ì§€ì •í•œ í´ë˜ìŠ¤ì˜ íŒ¨í‚¤ì§€ë¥¼ íƒìƒ‰ ì‹œì‘ ìœ„ì¹˜ë¡œ ì§€ì •
+	basePackageClasses = AutoAppConfig.class, // AutoAppConfig.classì˜ íŒ¨í‚¤ì§€ëŠ” hello.core
 	
-	// **Å½»ö ½ÃÀÛ À§Ä¡¸¦ ÁöÁ¤ÇÏÁö ¾ÊÀ¸¸é @ComponentScanÀÌ ºÙÀº ¼³Á¤ Á¤º¸ Å¬·¡½ºÀÇ ÆĞÅ°Áö°¡ ½ÃÀÛ À§Ä¡°¡ µÊ. => ½ÃÀÛ À§Ä¡¸¦ ÁöÁ¤ÇÏÁö ¾Ê°í, ¼³Á¤ Á¤º¸ Å¬·¡½º¸¦ ÇÁ·ÎÁ§Æ® ÃÖ»ó´Ü¿¡ µÎ´Â ¹æ¹ıÀ» ±ÇÀå
+	// **íƒìƒ‰ ì‹œì‘ ìœ„ì¹˜ë¥¼ ì§€ì •í•˜ì§€ ì•Šìœ¼ë©´ @ComponentScanì´ ë¶™ì€ ì„¤ì • ì •ë³´ í´ë˜ìŠ¤ì˜ íŒ¨í‚¤ì§€ê°€ ì‹œì‘ ìœ„ì¹˜ê°€ ë¨. => ì‹œì‘ ìœ„ì¹˜ë¥¼ ì§€ì •í•˜ì§€ ì•Šê³ , ì„¤ì • ì •ë³´ í´ë˜ìŠ¤ë¥¼ í”„ë¡œì íŠ¸ ìµœìƒë‹¨ì— ë‘ëŠ” ë°©ë²•ì„ ê¶Œì¥
 		
-	// ÀÌÀü±îÁö »ç¿ëÇÑ @Configuration ÄÚµå´Â ÄÄÆ÷³ÍÆ® ½ºÄµ ´ë»ó¿¡¼­ Á¦¿Ü(AppConfig, TestConfig)
+	// ì´ì „ê¹Œì§€ ì‚¬ìš©í•œ @Configuration ì½”ë“œëŠ” ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº” ëŒ€ìƒì—ì„œ ì œì™¸(AppConfig, TestConfig)
 	excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
 public class AutoAppConfig {
