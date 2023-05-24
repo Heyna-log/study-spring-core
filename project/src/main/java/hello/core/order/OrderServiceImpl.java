@@ -9,13 +9,19 @@ import hello.core.member.MemberRepository;
 
 @Component
 public class OrderServiceImpl implements OrderService {
-	
+
+	/*
+	* ** 생성자 주입 방식을 사용하면 final 키워드 사용 가능
+	*
+	* final 키워드 사용
+	*  - 필드 선언 시 초기값을 세팅하거나, 생성자 메소드를 통해서만 값을 넣어줄 수 있다.
+	*  - 이후에는 값을 변경할 수 없다.
+	*/
 	private final MemberRepository memberRepository;
-	
-	// 할인 정책
-	private final DiscountPolicy discountPolicy;
+	private final DiscountPolicy discountPolicy; // 할인 정책
 	
 	// ** 의존관계 주입(Dependency Injection) - 생성자 주입(Constructor Injection)
+	// 생성자 메소드는 객체를 생성할 때 딱 한 번만 호출되고, 이후에는 호출되는 일이 없다. => 의존관계 불변
 	@Autowired
 	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
 		this.memberRepository = memberRepository;
