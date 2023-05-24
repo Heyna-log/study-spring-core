@@ -11,12 +11,12 @@ import org.springframework.context.annotation.Configuration;
 public class StatefulServiceTest {
 
 	/*
-	 * ** ½Ì±ÛÅæ ¹æ½ÄÀÇ ÁÖÀÇÁ¡
-	 *  => »óÅÂ¸¦ À¯Áö(stateful)ÇÏ°Ô ¼³°èÇÏ¸é ¾ÈµÈ´Ù!! Áï, ¹«»óÅÂ(stateless)·Î ¼³°èÇØ¾ß ÇÑ´Ù!!!
-	 *   - Æ¯Á¤ Å¬¶óÀÌ¾ğÆ®¿¡ ÀÇÁ¸ÀûÀÎ ÇÊµå°¡ ÀÖÀ¸¸é ¾ÈµÈ´Ù.
-	 *   - Æ¯Á¤ Å¬¶óÀÌ¾ğÆ®°¡ °ªÀ» º¯°æÇÒ ¼ö ÀÖ´Â ÇÊµå°¡ ÀÖÀ¸¸é ¾ÈµÈ´Ù.
-	 *   - °¡±ŞÀû ÀĞ±â¸¸ °¡´ÉÇØ¾ß ÇÑ´Ù.
-	 *   - ÇÊµå ´ë½Å¿¡ ÀÚ¹Ù¿¡¼­ °øÀ¯µÇÁö ¾Ê´Â, Áö¿ªº¯¼ö, ÆÄ¶ó¹ÌÅÍ, ThreadLocal µîÀ» »ç¿ëÇØ¾ß ÇÑ´Ù.
+	 * ** ì‹±ê¸€í†¤ ë°©ì‹ì˜ ì£¼ì˜ì 
+	 *  => ìƒíƒœë¥¼ ìœ ì§€(stateful)í•˜ê²Œ ì„¤ê³„í•˜ë©´ ì•ˆëœë‹¤!! ì¦‰, ë¬´ìƒíƒœ(stateless)ë¡œ ì„¤ê³„í•´ì•¼ í•œë‹¤!!!
+	 *   - íŠ¹ì • í´ë¼ì´ì–¸íŠ¸ì— ì˜ì¡´ì ì¸ í•„ë“œê°€ ìˆìœ¼ë©´ ì•ˆëœë‹¤.
+	 *   - íŠ¹ì • í´ë¼ì´ì–¸íŠ¸ê°€ ê°’ì„ ë³€ê²½í•  ìˆ˜ ìˆëŠ” í•„ë“œê°€ ìˆìœ¼ë©´ ì•ˆëœë‹¤.
+	 *   - ê°€ê¸‰ì  ì½ê¸°ë§Œ ê°€ëŠ¥í•´ì•¼ í•œë‹¤.
+	 *   - í•„ë“œ ëŒ€ì‹ ì— ìë°”ì—ì„œ ê³µìœ ë˜ì§€ ì•ŠëŠ”, ì§€ì—­ë³€ìˆ˜, íŒŒë¼ë¯¸í„°, ThreadLocal ë“±ì„ ì‚¬ìš©í•´ì•¼ í•œë‹¤.
 	 *  
 	 * */
 	
@@ -26,21 +26,21 @@ public class StatefulServiceTest {
 		StatefulService statefulService1 = ac.getBean("statefulService", StatefulService.class);
 		StatefulService statefulService2 = ac.getBean("statefulService", StatefulService.class);
 		
-		// ThreadA: »ç¿ëÀÚA°¡ 10000¿ø ÁÖ¹®
+		// ThreadA: ì‚¬ìš©ìAê°€ 10000ì› ì£¼ë¬¸
 		int userAPrice = statefulService1.order("userA", 10000);
 		
-		// ThreadB: »ç¿ëÀÚB°¡ 20000¿ø ÁÖ¹®
+		// ThreadB: ì‚¬ìš©ìBê°€ 20000ì› ì£¼ë¬¸
 		int userBPrice = statefulService2.order("userB", 20000);
 		
-		// ThreadA: »ç¿ëÀÚA°¡ ÁÖ¹®ÇÑ ±İ¾× Á¶È¸
+		// ThreadA: ì‚¬ìš©ìAê°€ ì£¼ë¬¸í•œ ê¸ˆì•¡ ì¡°íšŒ
 		System.out.println("priceA : " + userAPrice);
 		
 		
-		// »ç¿ëÀÚA°¡ ÁÖ¹®ÇÑ ±İ¾×ÀÌ »ç¿ëÀÚB°¡ ÁÖ¹®ÇÑ ±İ¾×¿¡ ¿µÇâÀ» ¹ŞÁö ¾ÊÀ½
+		// ì‚¬ìš©ìAê°€ ì£¼ë¬¸í•œ ê¸ˆì•¡ì´ ì‚¬ìš©ìBê°€ ì£¼ë¬¸í•œ ê¸ˆì•¡ì— ì˜í–¥ì„ ë°›ì§€ ì•ŠìŒ
 		assertThat(userAPrice).isEqualTo(10000);
 	}
 	
-	// test¿ë config
+	// testìš© config
 	@Configuration
 	static class TestConfig {
 		

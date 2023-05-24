@@ -12,7 +12,7 @@ public class XmlAppContext {
 
 	@Test
 	void xmlAppContext() {
-		ApplicationContext ac =  new GenericXmlApplicationContext("appConfig.xml"); // xmlÆÄÀÏ ±â¹İÀ¸·Î ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê »ı¼º
+		ApplicationContext ac =  new GenericXmlApplicationContext("appConfig.xml"); // xmlíŒŒì¼ ê¸°ë°˜ìœ¼ë¡œ ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆ ìƒì„±
 		MemberService memberService = ac.getBean("memberService", MemberService.class);
 		assertThat(memberService).isInstanceOf(MemberService.class);
 	}

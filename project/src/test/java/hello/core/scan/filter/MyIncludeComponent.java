@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface MyIncludeComponent {
-	// @MyIncludeComponent°¡ ºÙÀ¸¸é ÄÄÆ÷³ÍÆ® ½ºÄµ ´ë»ó¿¡ Ãß°¡µÈ´Ù!
+	// @MyIncludeComponentê°€ ë¶™ìœ¼ë©´ ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº” ëŒ€ìƒì— ì¶”ê°€ëœë‹¤!
 }

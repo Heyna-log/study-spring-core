@@ -14,7 +14,7 @@ public class BeanDefinitionTest {
 //	GenericXmlApplicationContext ac = new GenericXmlApplicationContext("appConfig.xml");
 	
 	@Test
-	@DisplayName("ºó ¼³Á¤ ¸ŞÅ¸ Á¤º¸ È®ÀÎ")
+	@DisplayName("ë¹ˆ ì„¤ì • ë©”íƒ€ ì •ë³´ í™•ì¸")
 	void findApplicationBean() {
 		String[] beanDefinitionNames = ac.getBeanDefinitionNames();
 		for (String beanNefinitionName : beanDefinitionNames) {

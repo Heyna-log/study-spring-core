@@ -17,11 +17,11 @@ public class ComponentFilterAppConfigTest {
 	void filterScan() {
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ComponentFilterAppConfig.class);
 		
-		// ÄÄÆ÷³ÍÆ® ½ºÄµ ´ë»óÀÌ¾úÀ¸¹Ç·Î ½ºÇÁ¸µ ºóÀ¸·Î µî·ÏµÇ¾î Á¶È¸ °¡´É
+		// ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº” ëŒ€ìƒì´ì—ˆìœ¼ë¯€ë¡œ ìŠ¤í”„ë§ ë¹ˆìœ¼ë¡œ ë“±ë¡ë˜ì–´ ì¡°íšŒ ê°€ëŠ¥
 		BeanA beanA = ac.getBean(BeanA.class);
 		assertThat(beanA).isNotNull();
 		
-		// ÄÄÆ÷³ÍÆ® ½ºÄµ ´ë»óÀÌ ¾Æ´Ï¾úÀ¸¹Ç·Î ½ºÇÁ¸µ ºóÀ¸·Î µî·ÏµÇÁö ¾Ê¾Æ Á¶È¸ ºÒ°¡´É
+		// ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº” ëŒ€ìƒì´ ì•„ë‹ˆì—ˆìœ¼ë¯€ë¡œ ìŠ¤í”„ë§ ë¹ˆìœ¼ë¡œ ë“±ë¡ë˜ì§€ ì•Šì•„ ì¡°íšŒ ë¶ˆê°€ëŠ¥
 //		BeanB beanB = ac.getBean(BeanB.class); // NoSuchBeanDefinitionException
 		Assertions.assertThrows(
 				NoSuchBeanDefinitionException.class, 
@@ -32,18 +32,18 @@ public class ComponentFilterAppConfigTest {
 	
 	@Configuration
 	@ComponentScan(
-			// @MyIncludeComponentÀÌ Àû¿ëµÈ Å¬·¡½º¸¦ ÄÄÆ÷³ÍÆ® ½ºÄµ ´ë»ó¿¡ Ãß°¡
+			// @MyIncludeComponentì´ ì ìš©ëœ í´ë˜ìŠ¤ë¥¼ ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº” ëŒ€ìƒì— ì¶”ê°€
 			includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
-			// @MyExcludeComponentÀÌ Àû¿ëµÈ Å¬·¡½º¸¦ ÄÄÆ÷³ÍÆ® ½ºÄµ ´ë»ó¿¡¼­ Á¦¿Ü
+					// @MyExcludeComponentì´ ì ìš©ëœ í´ë˜ìŠ¤ë¥¼ ì»´í¬ë„ŒíŠ¸ ìŠ¤ìº” ëŒ€ìƒì—ì„œ ì œì™¸
 			excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
 			
 			/* 
-			 * **FilterType ¿É¼Ç
-			 *  - ANNOTATION : ±âº»°ª. ¾î³ëÅ×ÀÌ¼ÇÀ» ÀÎ½ÄÇØ¼­ µ¿ÀÛÇÔ.
-			 *  - ASSIGNABLE_TYPE : ÁöÁ¤ÇÑ Å¸ÀÔ°ú ÀÚ½Ä Å¸ÀÔÀ» ÀÎ½ÄÇØ¼­ µ¿ÀÛÇÔ. Å¬·¡½º¸¦ Á÷Á¢ ÁöÁ¤ÇÒ ¼ö ÀÖÀ½.
-			 *  - ASPECTJ : AspectJ ÆĞÅÏ »ç¿ë.
-			 *  - REGEX : Á¤±Ô Ç¥Çö½Ä
-			 *  - CUSTOM : 'TypeFilter'¶ó´Â ÀÎÅÍÆäÀÌ½º¸¦ ±¸ÇöÇØ¼­ Ã³¸®ÇÔ.
+			 * **FilterType ì˜µì…˜
+			 *  - ANNOTATION : ê¸°ë³¸ê°’. ì–´ë…¸í…Œì´ì…˜ì„ ì¸ì‹í•´ì„œ ë™ì‘í•¨.
+			 *  - ASSIGNABLE_TYPE : ì§€ì •í•œ íƒ€ì…ê³¼ ìì‹ íƒ€ì…ì„ ì¸ì‹í•´ì„œ ë™ì‘í•¨. í´ë˜ìŠ¤ë¥¼ ì§ì ‘ ì§€ì •í•  ìˆ˜ ìˆìŒ.
+			 *  - ASPECTJ : AspectJ íŒ¨í„´ ì‚¬ìš©.
+			 *  - REGEX : ì •ê·œ í‘œí˜„ì‹
+			 *  - CUSTOM : 'TypeFilter'ë¼ëŠ” ì¸í„°í˜ì´ìŠ¤ë¥¼ êµ¬í˜„í•´ì„œ ì²˜ë¦¬í•¨.
 			 */
 		)
 	static class ComponentFilterAppConfig {

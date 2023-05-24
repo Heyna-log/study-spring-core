@@ -36,7 +36,7 @@ public class ConfigurationSingletonTest {
 	void configurationDeep() {
 		AppConfig bean = ac.getBean(AppConfig.class);
 		
-		// AppConfig ·±Å¸ÀÓ Å¬·¡½º °´Ã¼ È®ÀÎ
+		// AppConfig ëŸ°íƒ€ì„ í´ë˜ìŠ¤ ê°ì²´ í™•ì¸
 		System.out.println("been : " + bean.getClass());
 	}
 }

@@ -13,15 +13,15 @@ import hello.core.member.MemberService;
 public class SingletonTest {
 
 	@Test
-	@DisplayName("½ºÇÁ¸µ ¾ø´Â ¼ø¼öÇÑ DI ÄÁÅ×ÀÌ³Ê")
+	@DisplayName("ìŠ¤í”„ë§ ì—†ëŠ” ìˆœìˆ˜í•œ DI ì»¨í…Œì´ë„ˆ")
 	void pureContainer() {
 		AppConfig appConfig = new AppConfig();
 		
-		// 1. Á¶È¸ : È£ÃâÇÒ ¶§¸¶´Ù °´Ã¼¸¦ »ı¼º
-		MemberService memberService1 = appConfig.memberService(); // È£Ãâ1
-		MemberService memberService2 = appConfig.memberService(); // È£Ãâ2
+		// 1. ì¡°íšŒ : í˜¸ì¶œí•  ë•Œë§ˆë‹¤ ê°ì²´ë¥¼ ìƒì„±
+		MemberService memberService1 = appConfig.memberService(); // í˜¸ì¶œ1
+		MemberService memberService2 = appConfig.memberService(); // í˜¸ì¶œ2
 		
-		// 2. ÂüÁ¶°ªÀÌ ´Ù¸¥ °ÍÀ» È®ÀÎ
+		// 2. ì°¸ì¡°ê°’ì´ ë‹¤ë¥¸ ê²ƒì„ í™•ì¸
 		System.out.println("memberService1 : " + memberService1);
 		System.out.println("memberService2 : " + memberService2);
 		
@@ -29,28 +29,28 @@ public class SingletonTest {
 		assertThat(memberService1).isNotSameAs(memberService2);
 		
 		/*
-		 * AppConfig(½ºÇÁ¸µ ¾ø´Â ¼ø¼öÇÑ DI ÄÁÅ×ÀÌ³Ê)´Â ¿äÃ»À» ÇÒ ¶§¸¶´Ù »õ·Î¿î °´Ã¼¸¦ »ı¼º
-		 * ex) °í°´ Æ®·¡ÇÈÀÌ ÃÊ´ç 100ÀÌ ³ª¿À¸é ÃÊ´ç 100°³ °´Ã¼°¡ »ı¼ºµÇ°í ¼Ò¸êµÊ
-		 * => ¸Ş¸ğ¸® ³¶ºñ°¡ ½ÉÇÔ
+		 * AppConfig(ìŠ¤í”„ë§ ì—†ëŠ” ìˆœìˆ˜í•œ DI ì»¨í…Œì´ë„ˆ)ëŠ” ìš”ì²­ì„ í•  ë•Œë§ˆë‹¤ ìƒˆë¡œìš´ ê°ì²´ë¥¼ ìƒì„±
+		 * ex) ê³ ê° íŠ¸ë˜í”½ì´ ì´ˆë‹¹ 100ì´ ë‚˜ì˜¤ë©´ ì´ˆë‹¹ 100ê°œ ê°ì²´ê°€ ìƒì„±ë˜ê³  ì†Œë©¸ë¨
+		 * => ë©”ëª¨ë¦¬ ë‚­ë¹„ê°€ ì‹¬í•¨
 		 * 
-		 * **¸Ş¸ğ¸® ³¶ºñ¸¦ ÇØ°áÇÏ·Á¸é
-		 * ¿äÃ»¼ö¿Í »ó°ü¾øÀÌ ÇØ´ç °´Ã¼°¡ 1°³¸¸ »ı¼ºµÇ°í °øÀ¯ÇÏµµ·Ï ¼³°è ==> ½Ì±ÛÅæ ÆĞÅÏ
+		 * **ë©”ëª¨ë¦¬ ë‚­ë¹„ë¥¼ í•´ê²°í•˜ë ¤ë©´
+		 * ìš”ì²­ìˆ˜ì™€ ìƒê´€ì—†ì´ í•´ë‹¹ ê°ì²´ê°€ 1ê°œë§Œ ìƒì„±ë˜ê³  ê³µìœ í•˜ë„ë¡ ì„¤ê³„ ==> ì‹±ê¸€í†¤ íŒ¨í„´
 		 * */
 	}
 	
 	@Test
-	@DisplayName("½Ì±ÛÅæ ÆĞÅÏÀ» Àû¿ëÇÑ °´Ã¼ »ç¿ë")
+	@DisplayName("ì‹±ê¸€í†¤ íŒ¨í„´ì„ ì ìš©í•œ ê°ì²´ ì‚¬ìš©")
 	void singletonServiceTest() {
 		
-		// private »ı¼ºÀÚÀÌ¹Ç·Î new¸¦ ÀÌ¿ëÇØ¼­ °´Ã¼ »ı¼º ºÒ°¡´É
+		// private ìƒì„±ìì´ë¯€ë¡œ newë¥¼ ì´ìš©í•´ì„œ ê°ì²´ ìƒì„± ë¶ˆê°€ëŠ¥
 //		new SingletonService(); 
 		
-		// static ¸Ş¼­µå¸¦ ÅëÇØ °´Ã¼ Á¶È¸ °¡´É
-		// È£ÃâÇÒ ¶§¸¶´Ù °°Àº °´Ã¼ ÀÎ½ºÅÏ½º ¹İÈ¯
+		// static ë©”ì„œë“œë¥¼ í†µí•´ ê°ì²´ ì¡°íšŒ ê°€ëŠ¥
+		// í˜¸ì¶œí•  ë•Œë§ˆë‹¤ ê°™ì€ ê°ì²´ ì¸ìŠ¤í„´ìŠ¤ ë°˜í™˜
 		SingletonService singletonService1 = SingletonService.getInstance();
 		SingletonService singletonService2 = SingletonService.getInstance();
 		
-		// ÂüÁ¶°ªÀÌ °°Àº °ÍÀ» È®ÀÎ
+		// ì°¸ì¡°ê°’ì´ ê°™ì€ ê²ƒì„ í™•ì¸
 		System.out.println("singletonService1 : " + singletonService1);
 		System.out.println("singletonService2 : " + singletonService2);
 		
@@ -59,19 +59,19 @@ public class SingletonTest {
 	}
 	
 	@Test
-	@DisplayName("½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê¿Í ½Ì±ÛÅæ")
+	@DisplayName("ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆì™€ ì‹±ê¸€í†¤")
 	void singletonContainer() {
 		
-		/* ½ºÇÁ¸µÀÇ ±âº» ºó µî·Ï ¹æ½Ä -> ½Ì±ÛÅæ */
+		/* ìŠ¤í”„ë§ì˜ ê¸°ë³¸ ë¹ˆ ë“±ë¡ ë°©ì‹ -> ì‹±ê¸€í†¤ */
 
-		// ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê »ı¼º(½Ì±ÛÅæ ÄÁÅ×ÀÌ³Ê)
+		// ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆ ìƒì„±(ì‹±ê¸€í†¤ ì»¨í…Œì´ë„ˆ)
 		ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 		
-		// Á¶È¸
-		MemberService memberService1 = ac.getBean("memberService", MemberService.class); // È£Ãâ1
-		MemberService memberService2 = ac.getBean("memberService", MemberService.class); // È£Ãâ2
+		// ì¡°íšŒ
+		MemberService memberService1 = ac.getBean("memberService", MemberService.class); // í˜¸ì¶œ1
+		MemberService memberService2 = ac.getBean("memberService", MemberService.class); // í˜¸ì¶œ2
 		
-		// Á¶È¸ÇÒ ¶§¸¶´Ù °°Àº °´Ã¼¸¦ ¹İÈ¯ÇÏ´ÂÁö(ÂüÁ¶°ªÀÌ °°ÀºÁö) È®ÀÎ => °´Ã¼¸¦ ½Ì±ÛÅæÀ¸·Î °ü¸®
+		// ì¡°íšŒí•  ë•Œë§ˆë‹¤ ê°™ì€ ê°ì²´ë¥¼ ë°˜í™˜í•˜ëŠ”ì§€(ì°¸ì¡°ê°’ì´ ê°™ì€ì§€) í™•ì¸ => ê°ì²´ë¥¼ ì‹±ê¸€í†¤ìœ¼ë¡œ ê´€ë¦¬
 		System.out.println("memberService1 : " + memberService1);
 		System.out.println("memberService2 : " + memberService2);
 		

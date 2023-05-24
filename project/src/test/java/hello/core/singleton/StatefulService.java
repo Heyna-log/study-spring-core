@@ -2,12 +2,12 @@ package hello.core.singleton;
 
 public class StatefulService {
 	
-//	private int price; // »óÅÂ¸¦ À¯ÁöÇÏ´Â ÇÊµå
+//	private int price; // ìƒíƒœë¥¼ ìœ ì§€í•˜ëŠ” í•„ë“œ
 	
-	// ÁÖ¹® ½Ã °¡°İÀ» ÀúÀå
+	// ì£¼ë¬¸ ì‹œ ê°€ê²©ì„ ì €ì¥
 	public int order(String name, int price) {
 		System.out.println("name : " + name + " | price : " + price);
-		return price; // °øÀ¯µÇÁö ¾Ê´Â Áö¿ªº¯¼ö·Î °ªÀ» ³Ñ±è
+		return price; // ê³µìœ ë˜ì§€ ì•ŠëŠ” ì§€ì—­ë³€ìˆ˜ë¡œ ê°’ì„ ë„˜ê¹€
 	}
 	
 //	public int getPrice() {
