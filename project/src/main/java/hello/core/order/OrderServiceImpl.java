@@ -1,13 +1,16 @@
 package hello.core.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
 	/*
@@ -17,16 +20,15 @@ public class OrderServiceImpl implements OrderService {
 	*  - 필드 선언 시 초기값을 세팅하거나, 생성자 메소드를 통해서만 값을 넣어줄 수 있다.
 	*  - 이후에는 값을 변경할 수 없다.
 	*/
-	private final MemberRepository memberRepository;
+	@Nullable private final MemberRepository memberRepository;
 	private final DiscountPolicy discountPolicy; // 할인 정책
 	
-	// ** 의존관계 주입(Dependency Injection) - 생성자 주입(Constructor Injection)
-	// 생성자 메소드는 객체를 생성할 때 딱 한 번만 호출되고, 이후에는 호출되는 일이 없다. => 의존관계 불변
-	@Autowired
-	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-		this.memberRepository = memberRepository;
-		this.discountPolicy = discountPolicy;
-	}
+	// ** @RequiredArgsConstructor를 사용하면 생성자 의존관계 주입 메소드(아래 주석 코드)를 자동으로 생성해준다!!
+	// final이 붙은 필드를 모아서 생성자를 자동으로 만들어준다.
+//	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//		this.memberRepository = memberRepository;
+//		this.discountPolicy = discountPolicy;
+//	}
 	
 	/*
 	 * ** DIP
